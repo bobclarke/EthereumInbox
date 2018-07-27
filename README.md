@@ -1,1 +1,1 @@
-# EthereumInbox
+# ethereum-inbox
