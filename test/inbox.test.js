@@ -31,12 +31,27 @@ beforeEach( async function() {
     deployedContractObj = await new web3.eth.Contract( JSON.parse(interface) )
         .deploy({data: bytecode, arguments: ['Hi there!'] })
         .send({ from: accounts[0], gas:'1000000' });
+
+    // Not sure if I need this 
+    //deployedContractObj.setProvider(ganache.provider());
 });
 
 describe('Inbox', function () {
     it ('deploys a contract', function(){
         assert.ok(deployedContractObj.options.address);
-    });   
+    });
+
+    it('has the default message', async function(){
+        const message = await deployedContractObj.methods.message().call();
+        assert.equal(message, 'Hi there!');
+    });
+
+    it('can change the message', async function(){
+        await deployedContractObj.methods.setMessage('bye!').send({ from: accounts[0] });
+        const message = await deployedContractObj.methods.message().call();
+        assert.equal(message, 'bye!');
+
+    }); 
 });
 
 
