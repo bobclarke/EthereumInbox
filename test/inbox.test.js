@@ -17,6 +17,7 @@ const { interface, bytecode } = require('../compile');
 // Before each test case we need to use an account to deploy a contract
 let accounts, contract, contractObj;
 beforeEach( async function() {
+
     // get the list of predefined gnache accounts
     accounts = await web3.eth.getAccounts();
 
