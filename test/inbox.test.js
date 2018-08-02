@@ -20,20 +20,10 @@ beforeEach( async function() {
     // get the list of predefined gnache accounts
     accounts = await web3.eth.getAccounts();
 
-    // The longhand way
-    /*
-    contract = new web3.eth.Contract( JSON.parse(interface) )
-    contractObj = contract.deploy({data: bytecode, arguments: ['Hi there!'] })
-    deployedContractObj = await contractObj.send({ from: accounts[0], gas:'1000000' })
-    */
-
     // The shorthand way 
     deployedContractObj = await new web3.eth.Contract( JSON.parse(interface) )
         .deploy({data: bytecode, arguments: ['Hi there!'] })
         .send({ from: accounts[0], gas:'1000000' });
-
-    // Not sure if I need this 
-    //deployedContractObj.setProvider(ganache.provider());
 });
 
 describe('Inbox', function () {
@@ -53,7 +43,3 @@ describe('Inbox', function () {
 
     }); 
 });
-
-
-
-
