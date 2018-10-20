@@ -7,12 +7,13 @@ contract Inbox {
         message = initialMessage;
     }
 
-    
     function setMessage (string newMessage) public {
         message = newMessage;
     }
     
-    function getMessage () public view returns (string) {
-        return message;
-    }
+    // function getMessage () public view returns (string) {
+    //    return message;
+    //}
 }
+
+

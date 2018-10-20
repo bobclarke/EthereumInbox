@@ -6,9 +6,10 @@
 
 const assert = require('assert') // pull in the assert framework
 const ganache = require('ganache-cli') // ganache is a local test network / blockchain
+const provider = ganache.provider();
 const Web3 = require('web3') // web3 is our NodeJS framework for interfacing with the blockchain
-const web3 = new Web3(ganache.provider()); // Instantiate an instance of Web3 and pass it the gnache provider
-const { interface, bytecode } = require('../compile'); // get the interface and bytecode from our compile.js file
+const web3 = new Web3( provider ); // Instantiate an instance of Web3 and pass it the gnache provider
+const { interface, bytecode } = require('../compile'); // run compile.js and retreive interface and bytecode from module exports
 let accounts, contract, contractObj;
 
 /* *****************************
